@@ -1,10 +1,9 @@
 import { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import Products from './components/Products'
 
 class App extends Component {
   state = {
-    pruducts: [
+    products: [
       {
         name: 'Tomato',
         price: 1.5,
@@ -25,7 +24,12 @@ class App extends Component {
   render () {
     return (
       <div>
-        <p>Hello World!.</p>
+        <Products
+          addCartItem={() => {
+            console.log('add cart')
+          }}
+          products={this.state.products}
+        />
       </div>
     )
   }
