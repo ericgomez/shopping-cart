@@ -22,18 +22,33 @@ class App extends Component {
         price: 3.5,
         image: '/products/carrot.jpg'
       }
+    ],
+    cart: [
+      // {
+      //   name: 'Carrot',
+      //   price: 3.5,
+      //   image: '/products/carrot.jpg',
+      //   quantity: 1
+      // }
     ]
   }
+
+  addCartItem = product => {
+    const { cart } = this.state
+    const newCart = [...cart, { ...product, quantity: 1 }]
+
+    return this.setState({ cart: newCart })
+  }
+
   render () {
+    console.log(this.state.cart)
     return (
       <div>
-      <Navbar />
+        <Navbar />
         <Layout>
           <Title />
           <Products
-            addCartItem={() => {
-              console.log('add cart')
-            }}
+            addCartItem={this.addCartItem}
             products={this.state.products}
           />
         </Layout>
