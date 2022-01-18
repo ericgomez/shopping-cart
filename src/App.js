@@ -35,8 +35,20 @@ class App extends Component {
 
   addCartItem = product => {
     const { cart } = this.state
-    const newCart = [...cart, { ...product, quantity: 1 }]
 
+    // search product
+    if (cart.find(item => item.name === product.name)) {
+      // update quantity
+      const newCart = cart.map(item =>
+        item.name === product.name
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+      return this.setState({ cart: newCart })
+    }
+
+    // if not found, add new product
+    const newCart = [...cart, { ...product, quantity: 1 }]
     return this.setState({ cart: newCart })
   }
 
