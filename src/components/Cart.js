@@ -20,7 +20,7 @@ const styles = {
 
 class Cart extends Component {
   render () {
-    const { cart } = this.props
+    const { cart, isCartVisible, showCart } = this.props
 
     const quantity = cart.reduce((acc, item) => acc + item.quantity, 0)
     return (
@@ -28,8 +28,10 @@ class Cart extends Component {
         <span style={styles.bubble}>
           {quantity > 0 && <BubbleAlert value={quantity} />}
         </span>
-        <button style={styles.cart}>Cart</button>
-        <CartDetails cart={cart} />
+        <button onClick={showCart} style={styles.cart}>
+          Cart
+        </button>
+        {isCartVisible && <CartDetails cart={cart} />}
       </div>
     )
   }
