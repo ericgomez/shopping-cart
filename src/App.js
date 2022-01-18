@@ -56,7 +56,7 @@ class App extends Component {
     console.log(this.state.cart)
     return (
       <div>
-        <Navbar />
+        <Navbar cart={this.state.cart} />
         <Layout>
           <Title />
           <Products
